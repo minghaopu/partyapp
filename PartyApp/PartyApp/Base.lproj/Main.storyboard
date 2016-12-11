@@ -111,7 +111,7 @@
         <!--Detail-->
         <scene sceneID="JBh-BE-LP6">
             <objects>
-                <viewController id="zfd-rC-BnW" sceneMemberID="viewController">
+                <viewController id="zfd-rC-BnW" customClass="DetailViewController" customModule="PartyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0BD-HR-BQ0"/>
                         <viewControllerLayoutGuide type="bottom" id="Ghc-yr-pbC"/>

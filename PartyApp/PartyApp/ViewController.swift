@@ -85,6 +85,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return partyCell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath : NSIndexPath = self.partyTableView.indexPathForSelectedRow
+        
+        
+        let detailController = segue.destination as! DetailViewController
+        
+        switch partySegementedControl.selectedSegmentIndex {
+        case 0:
+            detailController.name = futureList[indexPath.row];
+            detailController.date = futureDateList[indexPath.row];
+            break;
+        case 1:
+            detailController.name = planList[indexPath.row];
+            detailController.date = planDateList[indexPath.row];
+            break;
+        case 2:
+            detailController.name = attendList[indexPath.row];
+            detailController.date = attendDateList[indexPath.row];
+            break;
+        default:
+            break;
+        }
+    }
 
     @IBAction func addBtnTapped(_ sender: Any) {
     }
