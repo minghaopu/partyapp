@@ -17,8 +17,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
     let attendList:[String] = ["attend item 1", "attend item 2", "attend item 3", "attend item 4"];
     
+    var totalParties:[Party]?
+    var futureParties:[Party]?
+    var planParties:[Party]?
+    var attendParties:[Party]?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //create three list;
+        let currentDateTime = Date()
+        for party in totalParties! {
+            if party.willAttend == true {
+                planParties?.append(party)
+                if party.startDate < currentDateTime {
+                    attendParties?.append(party)
+                }
+            }
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
