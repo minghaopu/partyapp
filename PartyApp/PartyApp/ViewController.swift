@@ -14,8 +14,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var partyTableView: UITableView!
     
     let futureList:[String] = ["future item 1", "future item 2"];
+    let futureDateList:[String] = ["2016/2/2","2016/2/3"];
     let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
+    let planDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4"];
     let attendList:[String] = ["attend item 1", "attend item 2", "attend item 3", "attend item 4"];
+    let attendDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4","2016/2/5"];
     
     var totalParties:[Party]?
     var futureParties:[Party]?
@@ -62,16 +65,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let partyCell = tableView.dequeueReusableCell(withIdentifier: "partyCell", for: indexPath)
+        let partyCell = tableView.dequeueReusableCell(withIdentifier: "partyCell", for: indexPath) as! PartiesTableViewCell
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            partyCell.textLabel?.text = futureList[indexPath.row];
+            partyCell.partyNameLb.text = futureList[indexPath.row];
+            partyCell.partyDateLb.text = futureDateList[indexPath.row];
             break;
         case 1:
-            partyCell.textLabel?.text = planList[indexPath.row];
+            partyCell.partyNameLb.text = planList[indexPath.row];
+            partyCell.partyDateLb.text = planDateList[indexPath.row];
             break;
         case 2:
-            partyCell.textLabel?.text = attendList[indexPath.row];
+            partyCell.partyNameLb.text = attendList[indexPath.row];
+            partyCell.partyDateLb.text = attendDateList[indexPath.row];
             break;
         default:
             break;
