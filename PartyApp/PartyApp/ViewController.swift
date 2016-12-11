@@ -87,8 +87,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath : NSIndexPath = self.partyTableView.indexPathForSelectedRow
-        
+        if segue.identifier == "AddParty"
+        {
+            return;
+        }
+        let indexPath : IndexPath = self.partyTableView.indexPathForSelectedRow!
         
         let detailController = segue.destination as! DetailViewController
         

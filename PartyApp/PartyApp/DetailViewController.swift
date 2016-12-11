@@ -10,14 +10,25 @@ import UIKit
 
 class DetailViewController: UIViewController{
  
-    var party : Party
-    var name : String
-    var date : String
+    var party : Party? = nil
+    var name : String = ""
+    var date : String = ""
 
+    @IBOutlet weak var partyNameLb: UILabel!
+    @IBOutlet weak var partyTimeLb: UILabel!
+    @IBOutlet weak var partyAddress: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        partyAddress.isUserInteractionEnabled = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        partyNameLb.text = name
+        partyTimeLb.text = date
+        partyAddress.text = "测试地址"
     }
     
 
