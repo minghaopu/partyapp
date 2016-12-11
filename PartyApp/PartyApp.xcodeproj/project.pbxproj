@@ -16,6 +16,7 @@
 		700591E31DF64649008937AC /* PartyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700591E21DF64649008937AC /* PartyAppUITests.swift */; };
 		70490B241DFD31370067E068 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70490B231DFD31370067E068 /* Workout.swift */; };
 		70490B271DFD31D40067E068 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70490B261DFD31D40067E068 /* Party.swift */; };
+		706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		700591E41DF64649008937AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70490B231DFD31370067E068 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		70490B261DFD31D40067E068 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		700591F01DF6465B008937AC /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */,
 				700591C41DF64649008937AC /* ViewController.swift */,
 			);
 			name = controller;
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */,
 				700591C51DF64649008937AC /* ViewController.swift in Sources */,
 				70490B241DFD31370067E068 /* Workout.swift in Sources */,
 				70490B271DFD31D40067E068 /* Party.swift in Sources */,
@@ -443,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PartyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GWU.PartyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -455,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PartyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GWU.PartyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

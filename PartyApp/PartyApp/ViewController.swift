@@ -29,15 +29,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         //create three list;
-        let currentDateTime = Date()
-        for party in totalParties! {
-            if party.willAttend == true {
-                planParties?.append(party)
-                if party.startDate < currentDateTime {
-                    attendParties?.append(party)
-                }
-            }
-        }
+//        let currentDateTime = Date()
+//        for party in totalParties! {
+//            if party.willAttend == true {
+//                planParties?.append(party)
+//                if party.startDate < currentDateTime {
+//                    attendParties?.append(party)
+//                }
+//            }
+//        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
