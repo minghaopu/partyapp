@@ -117,6 +117,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
 @import Foundation;
+@import ObjectiveC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -157,6 +158,21 @@ SWIFT_CLASS("_TtC8PartyApp14ViewController")
 - (IBAction)refreshBtnTapped:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8PartyApp7Workout")
+@interface Workout : NSObject <NSCoding>
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull startDate;
+@property (nonatomic, readonly) NSInteger pushupsCompleted;
+@property (nonatomic, readonly, copy) NSString * _Nonnull nameKey;
+@property (nonatomic, readonly, copy) NSString * _Nonnull startDateKey;
+@property (nonatomic, readonly, copy) NSString * _Nonnull pushupsCompletedKey;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name startDate:(NSDate * _Nonnull)startDate pushupsCompleted:(NSInteger)pushupsCompleted OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 #pragma clang diagnostic pop

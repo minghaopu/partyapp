@@ -1,6 +1,8 @@
 version: "Apple Swift version 3.0.1 (swiftlang-800.0.58.6 clang-800.0.42.1)"
 options: "3aa259ad6b9a21482e25944442788346"
-build_time: [534753888, 312726000]
+build_time: [534755029, 120496000]
 inputs:
   "/Users/roneil/Project/xcode/partyapp/PartyApp/PartyApp/ViewController.swift": [534753199, 0]
+  "/Users/roneil/Project/xcode/partyapp/PartyApp/PartyApp/Workout.swift": [534755011, 0]
+  "/Users/roneil/Project/xcode/partyapp/PartyApp/PartyApp/Party.swift": [534755027, 0]
   "/Users/roneil/Project/xcode/partyapp/PartyApp/PartyApp/AppDelegate.swift": [534301513, 0]
