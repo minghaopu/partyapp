@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let partyCell = tableView.dequeueReusableCell(withIdentifier: "partyCell", for: indexPath) as! PartiesTableViewCell
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
@@ -83,6 +84,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             break;
         }
         return partyCell
+    }
+
+    @IBAction func addBtnTapped(_ sender: Any) {
     }
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
