@@ -51,9 +51,9 @@ class DetailViewController: UIViewController{
     
     @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? EditViewController {
-            name = sourceViewController.name;
-            address = sourceViewController.address;
-            date = sourceViewController.date;
+            name = sourceViewController.nameInput.text;
+            address = sourceViewController.addressInput.text;
+            date = sourceViewController.dateInpute.text;
         }
     }
 

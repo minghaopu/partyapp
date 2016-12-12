@@ -32,10 +32,5 @@ class EditViewController: UIViewController {
         addressInput.text = address
         dateInpute.text = date
     }
-    @IBAction func saveBtnTapped(_ sender: Any) {
-        name = nameInput.text
-        address = addressInput.text
-        date = dateInpute.text
-    }
     
 }
