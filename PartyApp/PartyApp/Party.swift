@@ -30,14 +30,14 @@ class Party: NSObject, NSCoding {
         name = aDecoder.decodeObject(forKey: nameKey) as! String
         startDate = aDecoder.decodeObject(forKey: startDateKey) as! Date
         address = aDecoder.decodeObject(forKey: addressKey) as! String
-        willAttend = aDecoder.decodeObject(forKey: willAttendKey) as! Bool
+        willAttend = aDecoder.decodeBool(forKey: willAttendKey)
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: nameKey)
         aCoder.encode(startDate, forKey: startDateKey)
         aCoder.encode(address, forKey: addressKey)
-        aCoder.encode(willAttendKey, forKey: willAttendKey)
+        aCoder.encode(willAttend, forKey: willAttendKey)
     }
     
 }

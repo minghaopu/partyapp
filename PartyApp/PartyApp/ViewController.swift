@@ -13,6 +13,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var partySegementedControl: UISegmentedControl!
     @IBOutlet weak var partyTableView: UITableView!
     
+    
+    
+    
 //    let futureList:[String] = ["future item 1", "future item 2"];
 //    let futureDateList:[String] = ["2016/2/2","2016/2/3"];
 //    let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
@@ -27,9 +30,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let persistance = Persistance()
     
-    var futureMap: [Int: Int]?
-    var planMap: [Int: Int]?
-    var attendMap: [Int: Int]?
+    var futureMap = [Int: Int]()
+    var planMap = [Int: Int]()
+    var attendMap = [Int: Int]()
     
 
     
@@ -50,15 +53,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let party = totalParties?[i]
             if party?.willAttend == true {
                 planParties?.append(party!)
-                planMap?[planIndex] = i
+                planMap[planIndex] = i
                 planIndex += 1
                 if (party?.startDate)! < currentDateTime {
                     attendParties?.append(party!)
-                    attendMap?[attendedIndex] = i
+                    attendMap[attendedIndex] = i
                     attendedIndex += 1
                 }
             } else {
-                futureMap?[futureIndex] = i
+                futureParties?.append(party!);
+                futureMap[futureIndex] = i
                 futureIndex += 1
             }
         }
@@ -123,17 +127,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            detailController.index = futureMap?[indexPath.row]
+            detailController.index = futureMap[indexPath.row]
 //            detailController.name = futureList[indexPath.row];
 //            detailController.date = futureDateList[indexPath.row];
             break;
         case 1:
-            detailController.index = planMap?[indexPath.row]
+            detailController.index = planMap[indexPath.row]
 //            detailController.name = planList[indexPath.row];
 //            detailController.date = planDateList[indexPath.row];
             break;
         case 2:
-            detailController.index = attendMap?[indexPath.row]
+            detailController.index = attendMap[indexPath.row]
 //            detailController.name = attendList[indexPath.row];
 //            detailController.date = attendDateList[indexPath.row];
             break;
@@ -146,10 +150,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
-        partyTableView.reloadData()
+//        self.viewDidLoad();
     }
     
     @IBAction func refreshBtnTapped(_ sender: Any) {
+        self.viewDidLoad()
         partyTableView.reloadData()
     }
 
