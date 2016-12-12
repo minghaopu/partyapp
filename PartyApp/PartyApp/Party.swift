@@ -9,10 +9,10 @@
 import Foundation
 class Party: NSObject, NSCoding {
     
-    let name: String
-    let startDate: Date
-    let address: String
-    let willAttend: Bool
+    var name: String
+    var startDate: Date
+    var address: String
+    var willAttend: Bool
     
     let nameKey = "name"
     let startDateKey = "startDate"

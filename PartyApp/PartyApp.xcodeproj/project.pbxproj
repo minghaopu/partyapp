@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08B8B3471DFE8D5C00502A43 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B8B3461DFE8D5C00502A43 /* AddViewController.swift */; };
 		700591C31DF64649008937AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700591C21DF64649008937AC /* AppDelegate.swift */; };
 		700591C51DF64649008937AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700591C41DF64649008937AC /* ViewController.swift */; };
 		700591C81DF64649008937AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700591C61DF64649008937AC /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08B8B3461DFE8D5C00502A43 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		700591BF1DF64649008937AC /* PartyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		700591C21DF64649008937AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		700591C41DF64649008937AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */,
 				70FCD8341DFE5D2C00882BB2 /* EditViewController.swift */,
 				7064458E1DFE86280062D2E5 /* MapViewController.swift */,
+				08B8B3461DFE8D5C00502A43 /* AddViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */,
 				700591C51DF64649008937AC /* ViewController.swift in Sources */,
 				7064458D1DFDC0440062D2E5 /* AddPartyViewController.swift in Sources */,
+				08B8B3471DFE8D5C00502A43 /* AddViewController.swift in Sources */,
 				7064458F1DFE86280062D2E5 /* MapViewController.swift in Sources */,
 				70490B241DFD31370067E068 /* Workout.swift in Sources */,
 				70A924661DFD4E5600E95AE2 /* DetailViewController.swift in Sources */,

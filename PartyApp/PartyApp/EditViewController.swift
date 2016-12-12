@@ -34,5 +34,11 @@ class EditViewController: UIViewController {
         addressInput.text = party?.address
 //        dateInpute.text = party?.startDate
     }
+    @IBAction func saveBtnTapped(_ sender: Any) {
+        party?.name = nameInput.text!;
+        party?.address = addressInput.text!
+//        party?.startDate = dateInpute.text
+        persistance.saveParties(party: party!, index: index!)
+    }
     
 }
