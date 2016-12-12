@@ -47,4 +47,9 @@ class AddViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func onback(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
