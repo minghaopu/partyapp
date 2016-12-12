@@ -15,6 +15,12 @@ class AddAddressViewController: UIViewController,UISearchBarDelegate,MKMapViewDe
     
     @IBOutlet weak var mainMapView: MKMapView!
     @IBOutlet weak var searchBarOutlet: UISearchBar!
+    @IBOutlet weak var saveBtn: UIButton!
+    
+    weak var addViewController: AddViewController?
+    weak var editViewController: EditViewController?
+    
+    var currentLocationInfo:MapAnnotations?
     var mapItem = [MKMapItem]()
     
     let regionRadius: CLLocationDistance = 1000
@@ -65,6 +71,8 @@ class AddAddressViewController: UIViewController,UISearchBarDelegate,MKMapViewDe
                 let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
+                self.currentLocationInfo = nil;
+                self.saveBtn.setTitle("Close", for: UIControlState.normal)
             } else {
                 let items = response!.mapItems
                 for item in items {
@@ -77,6 +85,13 @@ class AddAddressViewController: UIViewController,UISearchBarDelegate,MKMapViewDe
                     self.mainMapView.addAnnotation(annotation)
                     self.mainMapView.selectAnnotation(annotation, animated: true)
                 }
+                if items.count > 0 {
+                    self.currentLocationInfo = MapAnnotations(coordinate: items[0].placemark.coordinate, title:  items[0].placemark.name, subtitle: items[0].phoneNumber)
+                    self.saveBtn.setTitle("Save", for: UIControlState.normal)
+                }else{
+                    self.currentLocationInfo = nil
+                    self.saveBtn.setTitle("Close", for: UIControlState.normal)
+                }
             }
         }
     }
@@ -84,6 +99,7 @@ class AddAddressViewController: UIViewController,UISearchBarDelegate,MKMapViewDe
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchBarOutlet.showsCancelButton = false
+            self.saveBtn.setTitle("Close", for: UIControlState.normal)
         } else{
             searchBarOutlet.showsCancelButton = true
         }
@@ -109,9 +125,23 @@ class AddAddressViewController: UIViewController,UISearchBarDelegate,MKMapViewDe
     }
     
     @IBAction func addAddress(_ sender: AnyObject) {
-        
+        if(currentLocationInfo != nil){
+            if self.addViewController != nil{
+                self.addViewController?.longitude = (currentLocationInfo?.coordinate)!.longitude
+                self.addViewController?.latitude = (currentLocationInfo?.coordinate)!.latitude
+                self.addViewController?.addressInput.text = (currentLocationInfo?.title)!
+            }else if self.editViewController != nil{
+                self.editViewController?.longitude = (currentLocationInfo?.coordinate)!.longitude
+                self.editViewController?.latitude = (currentLocationInfo?.coordinate)!.latitude
+                self.editViewController?.addressInput.text = (currentLocationInfo?.title)!
+            }
+        }
+        if self.addViewController != nil{
+            self.dismiss(animated: true, completion: nil)
+        }else if self.editViewController != nil{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
-    
 }
 
 

@@ -7,30 +7,40 @@
 //
 
 import Foundation
+import MapKit
+
 class Party: NSObject, NSCoding {
     
     var name: String
-    var startDate: Date
+    var startDate: String
     var address: String
     var willAttend: Bool
+    var latitude: Double
+    var longitude: Double
     
     let nameKey = "name"
     let startDateKey = "startDate"
     let addressKey = "address"
     let willAttendKey = "willAttend"
+    let latitudeKey = "latitude"
+    let longitudeKey = "longitude"
     
-    init(name: String, startDate: Date, address: String, willAttend: Bool) {
+    init(name: String, startDate: String, address: String, willAttend: Bool, coordinate:CLLocationCoordinate2D) {
         self.name = name
         self.startDate = startDate
         self.address = address
         self.willAttend = willAttend
+        self.latitude = coordinate.latitude;
+        self.longitude = coordinate.longitude;
     }
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: nameKey) as! String
-        startDate = aDecoder.decodeObject(forKey: startDateKey) as! Date
+        startDate = aDecoder.decodeObject(forKey: startDateKey) as! String
         address = aDecoder.decodeObject(forKey: addressKey) as! String
         willAttend = aDecoder.decodeBool(forKey: willAttendKey)
+        latitude = aDecoder.decodeDouble(forKey: latitudeKey)
+        longitude = aDecoder.decodeDouble(forKey: longitudeKey)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -38,6 +48,8 @@ class Party: NSObject, NSCoding {
         aCoder.encode(startDate, forKey: startDateKey)
         aCoder.encode(address, forKey: addressKey)
         aCoder.encode(willAttend, forKey: willAttendKey)
+        aCoder.encode(latitude, forKey: latitudeKey)
+        aCoder.encode(longitude, forKey: longitudeKey)
     }
     
 }

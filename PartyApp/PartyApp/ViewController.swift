@@ -56,7 +56,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 planParties?.append(party!)
                 planMap[planIndex] = i
                 planIndex += 1
-                if (party?.startDate)! < currentDateTime {
+                let dateFmt = DateFormatter()
+                dateFmt.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                let date = dateFmt.date(from: (party?.startDate)!)
+                if  date! < currentDateTime {
                     attendParties?.append(party!)
                     attendMap[attendedIndex] = i
                     attendedIndex += 1
@@ -112,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             break;
         }
         partyCell.partyNameLb.text = party?.name
-//        partyCell.partyDateLb.text = party.date
+        partyCell.partyDateLb.text = party?.startDate
         return partyCell
     }
     

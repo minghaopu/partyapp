@@ -10,14 +10,14 @@ import Foundation
 class Workout: NSObject, NSCoding {
     
     let name: String
-    let startDate: Date
+    let startDate: String
     let pushupsCompleted: Int
     
     let nameKey = "name"
     let startDateKey = "startDate"
     let pushupsCompletedKey = "pushupsCompleted"
     
-    init(name: String, startDate: Date, pushupsCompleted: Int) {
+    init(name: String, startDate: String, pushupsCompleted: Int) {
         self.name = name
         self.startDate = startDate
         self.pushupsCompleted = pushupsCompleted
@@ -25,7 +25,7 @@ class Workout: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: nameKey) as! String
-        startDate = aDecoder.decodeObject(forKey: startDateKey) as! Date
+        startDate = aDecoder.decodeObject(forKey: startDateKey) as! String
         pushupsCompleted = aDecoder.decodeInteger(forKey: pushupsCompletedKey)
     }
     

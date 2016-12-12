@@ -39,7 +39,7 @@ class DetailViewController: UIViewController{
         party = persistance.fetchParties()[index!]
         
         partyNameLb.text = party?.name
-//        partyTimeLb.text = party?.startDate
+        partyTimeLb.text = party?.startDate
         partyAddress.text = party?.address
         partyAttendSwitch.isOn = (party?.willAttend)!
         
@@ -57,6 +57,12 @@ class DetailViewController: UIViewController{
 //            destinationViewController.date = date
 //            destinationViewController.address = address
 //            destinationViewController.dateTimePicker = date
+        }else if segue.identifier == "mapSegue"{
+            let mapViewController = segue.destination as! MapViewController
+            
+            mapViewController.longitude = (party?.longitude)!
+            mapViewController.latitude = (party?.latitude)!
+            mapViewController.location = (party?.address)!
         }
     }
     
