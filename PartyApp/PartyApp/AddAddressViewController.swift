@@ -2,8 +2,8 @@
 //  AddAddressViewController.swift
 //  PartyApp
 //
-//  Created by XYZ on 2016/12/12.
-//  Copyright © 2016年 CSCI-6907-Minghao Pu. All rights reserved.
+//  Created by roneil on 12/5/16.
+//  Copyright © 2016 CSCI-6907-Minghao Pu. All rights reserved.
 //
 
 

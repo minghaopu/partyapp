@@ -22,8 +22,8 @@ class EditViewController: UIViewController {
     @IBOutlet weak var nameInput: UITextField!
     
     @IBOutlet weak var addressInput: UILabel!
+    @IBOutlet weak var dateInput: UILabel!
     
-    @IBOutlet weak var dateInpute: UILabel!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -34,38 +34,41 @@ class EditViewController: UIViewController {
         party = persistance.fetchParties()[index!]
         
         addressInput.isUserInteractionEnabled = true
-        addressInput.layer.borderWidth = 1.0;
-        addressInput.layer.borderColor = UIColor.gray.cgColor;
-        addressInput.layer.cornerRadius = 3.0;
         addressInput.layer.masksToBounds = true
         
-        dateInpute.isUserInteractionEnabled = true
-        dateInpute.layer.borderWidth = 1.0;
-        dateInpute.layer.borderColor = UIColor.gray.cgColor;
-        dateInpute.layer.cornerRadius = 3.0;
-        dateInpute.layer.masksToBounds = true
+        dateInput.isUserInteractionEnabled = true
+        dateInput.layer.masksToBounds = true
+        
+        //bind tapcesture to dateInput label
         
         let tapGesture = UITapGestureRecognizer()
-        tapGesture.addTarget(self, action: Selector(("showDatePikerView")))
-        dateInpute.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(EditViewController.showDatePikerView))
+        dateInput.addGestureRecognizer(tapGesture)
+        
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let datestr = dformatter.string(from: (party?.startDate)!)
         
         nameInput.text = party?.name
         addressInput.text = party?.address
-        dateInpute.text = party?.startDate
+        dateInput.text = datestr
         
         datePickerView.isHidden = true
     }
     
     @IBAction func saveBtnTapped(_ sender: Any) {
-        party?.name = nameInput.text!;
-        party?.address = addressInput.text!
-        party?.longitude = self.longitude;
-        party?.latitude = self.latitude;
-        party?.startDate = dateInpute.text!
-        
-        persistance.saveParties(party: party!, index: index!)
-        
-        self.navigationController?.popViewController(animated: true)
+        if nameInput.text != "" && addressInput.text != "" && dateInput.text != "" {
+            party?.name = nameInput.text!;
+            party?.address = addressInput.text!
+            party?.longitude = self.longitude;
+            party?.latitude = self.latitude;
+            party?.startDate = datePicker.date
+            
+            persistance.saveParties(party: party!, index: index!)
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +77,7 @@ class EditViewController: UIViewController {
     }
     
     func showDatePikerView(){
+        dismissKeyboard()
         self.datePickerView.isHidden = false;
     }
     
@@ -84,15 +88,18 @@ class EditViewController: UIViewController {
     @IBAction func changeDate(_ sender: AnyObject) {
         let date = datePicker.date
         
-        // 创建一个日期格式器
+        // create date formater to transform date to string
         let dformatter = DateFormatter()
-        // 为日期格式器设置格式字符串
-        dformatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        // 使用日期格式器格式化日期、时间
+        dformatter.dateFormat = "yyyy/MM/dd HH:mm"
         let datestr = dformatter.string(from: date)
         
-        self.dateInpute.text = datestr;
+        self.dateInput.text = datestr;
         
         self.datePickerView.isHidden = true;
+    }
+    
+    //hide keyboard
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

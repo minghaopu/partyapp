@@ -13,24 +13,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var partySegementedControl: UISegmentedControl!
     @IBOutlet weak var partyTableView: UITableView!
     
-    
-    
-    
-//    let futureList:[String] = ["future item 1", "future item 2"];
-//    let futureDateList:[String] = ["2016/2/2","2016/2/3"];
-//    let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
-//    let planDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4"];
-//    let attendList:[String] = ["attend item 1", "attend item 2", "attend item 3", "attend item 4"];
-//    let attendDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4","2016/2/5"];
+
     
     var totalParties:[Party]?
-    var futureParties:[Party]?
     var planParties:[Party]?
     var attendParties:[Party]?
     
     let persistance = Persistance()
     
-    var futureMap = [Int: Int]()
     var planMap = [Int: Int]()
     var attendMap = [Int: Int]()
     
@@ -40,34 +30,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
 
         totalParties = persistance.fetchParties()
-        //create three list;
         let currentDateTime = Date()
         var planIndex = 0
         var attendedIndex = 0
-        var futureIndex = 0
         
-        futureParties = []
-        planParties = []
-        attendParties = []
+        planParties = [] // for parties which users decide to go
+        attendParties = [] // for parties which users have already been to
         
+        // create dictionay for mapping view index to actual index;
         for i in 0 ..< (totalParties?.count)! {
             let party = totalParties?[i]
             if party?.willAttend == true {
                 planParties?.append(party!)
                 planMap[planIndex] = i
                 planIndex += 1
-                let dateFmt = DateFormatter()
-                dateFmt.dateFormat = "yyyy/MM/dd HH:mm:ss"
-                let date = dateFmt.date(from: (party?.startDate)!)
-                if  date! < currentDateTime {
+
+                if  (party?.startDate)! < currentDateTime {
                     attendParties?.append(party!)
                     attendMap[attendedIndex] = i
                     attendedIndex += 1
                 }
-            } else {
-                futureParties?.append(party!);
-                futureMap[futureIndex] = i
-                futureIndex += 1
             }
         }
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var returnVal = 0
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            returnVal = (futureParties?.count)!;
+            returnVal = (totalParties?.count)!;
             break
         case 1:
             returnVal = (planParties?.count)!;
@@ -102,20 +84,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var party : Party?
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            party = (futureParties?[indexPath.row])!
+            party = (totalParties?[indexPath.row])!
             break;
         case 1:
             party = (planParties?[indexPath.row])!
             break;
         case 2:
             party = (attendParties?[indexPath.row])!
-
             break;
         default:
             break;
         }
         partyCell.partyNameLb.text = party?.name
-        partyCell.partyDateLb.text = party?.startDate
+        
+        // create date formater to transform date to string
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy/MM/dd"
+        let datestr = dformatter.string(from: (party?.startDate)!)
+        
+        partyCell.partyDateLb.text = datestr
         return partyCell
     }
     
@@ -124,22 +111,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // delete row;
         var index = -1
+        // map index in view to actual data index;
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            index = futureMap[indexPath.row]!
-            //            detailController.name = futureList[indexPath.row];
-            //            detailController.date = futureDateList[indexPath.row];
+            index = indexPath.row
             break;
         case 1:
             index = planMap[indexPath.row]!
-            //            detailController.name = planList[indexPath.row];
-            //            detailController.date = planDateList[indexPath.row];
             break;
         case 2:
             index = attendMap[indexPath.row]!
-            //            detailController.name = attendList[indexPath.row];
-            //            detailController.date = attendDateList[indexPath.row];
             break;
         default:
             break;
@@ -162,19 +146,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            detailController.index = futureMap[indexPath.row]
-//            detailController.name = futureList[indexPath.row];
-//            detailController.date = futureDateList[indexPath.row];
+            detailController.index = indexPath.row
             break;
         case 1:
             detailController.index = planMap[indexPath.row]
-//            detailController.name = planList[indexPath.row];
-//            detailController.date = planDateList[indexPath.row];
             break;
         case 2:
             detailController.index = attendMap[indexPath.row]
-//            detailController.name = attendList[indexPath.row];
-//            detailController.date = attendDateList[indexPath.row];
             break;
         default:
             break;
@@ -185,7 +163,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
-//        self.viewDidLoad();
         partyTableView.reloadData()
     }
     

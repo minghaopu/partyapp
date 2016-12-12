@@ -14,11 +14,8 @@ class DetailViewController: UIViewController{
     
     let persistance = Persistance()
     
-//    
     var party : Party?
-//    var name : String?
-//    var date : String?
-//    var address : String?
+
 
     @IBOutlet weak var partyAttendSwitch: UISwitch!
     @IBOutlet weak var partyNameLb: UILabel!
@@ -28,9 +25,6 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         partyAddress.isUserInteractionEnabled = true
-        
-//        party = persistance.fetchParties()[index!]
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +32,13 @@ class DetailViewController: UIViewController{
         
         party = persistance.fetchParties()[index!]
         
+        // create date formater to transform date to string
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let datestr = dformatter.string(from: (party?.startDate)!)
+        
         partyNameLb.text = party?.name
-        partyTimeLb.text = party?.startDate
+        partyTimeLb.text = datestr
         partyAddress.text = party?.address
         partyAttendSwitch.isOn = (party?.willAttend)!
         
@@ -47,16 +46,10 @@ class DetailViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSegue"{
-//            let editParty = party
             let destinationViewController = segue.destination as! EditViewController
             
             destinationViewController.index = index
-            
-//            destinationViewController.editParty = party
-//            destinationViewController.name = name
-//            destinationViewController.date = date
-//            destinationViewController.address = address
-//            destinationViewController.dateTimePicker = date
+
         }else if segue.identifier == "mapSegue"{
             let mapViewController = segue.destination as! MapViewController
             
@@ -66,10 +59,9 @@ class DetailViewController: UIViewController{
         }
     }
     
-    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
-    }
 
     @IBAction func attendSwitchTapped(_ sender: Any) {
+        // modify party status 
         if partyAttendSwitch.isOn {
             party?.willAttend = true
         } else {

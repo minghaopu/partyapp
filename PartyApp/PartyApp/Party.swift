@@ -11,8 +11,10 @@ import MapKit
 
 class Party: NSObject, NSCoding {
     
+    let uuid = NSUUID().uuidString
+    
     var name: String
-    var startDate: String
+    var startDate: Date
     var address: String
     var willAttend: Bool
     var latitude: Double
@@ -25,7 +27,7 @@ class Party: NSObject, NSCoding {
     let latitudeKey = "latitude"
     let longitudeKey = "longitude"
     
-    init(name: String, startDate: String, address: String, willAttend: Bool, coordinate:CLLocationCoordinate2D) {
+    init(name: String, startDate: Date, address: String, willAttend: Bool, coordinate:CLLocationCoordinate2D) {
         self.name = name
         self.startDate = startDate
         self.address = address
@@ -36,7 +38,7 @@ class Party: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: nameKey) as! String
-        startDate = aDecoder.decodeObject(forKey: startDateKey) as! String
+        startDate = aDecoder.decodeObject(forKey: startDateKey) as! Date
         address = aDecoder.decodeObject(forKey: addressKey) as! String
         willAttend = aDecoder.decodeBool(forKey: willAttendKey)
         latitude = aDecoder.decodeDouble(forKey: latitudeKey)
