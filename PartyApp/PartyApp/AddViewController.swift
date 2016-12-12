@@ -18,12 +18,11 @@ class AddViewController: UIViewController {
     
     var party = Party(name: "", startDate: Date(), address: "", willAttend: false)
     
-    
     @IBOutlet weak var nameInput: UITextField!
     
-    @IBOutlet weak var addressInput: UITextField!
-    
     @IBOutlet weak var dateInpute: UITextField!
+
+    @IBOutlet weak var addressInput: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +34,14 @@ class AddViewController: UIViewController {
         addressInput.text = party.address
         //        dateInpute.text = party?.startDate
     }
-    @IBAction func saveBtnTapped(_ sender: Any) {
+
+    @IBAction func saveBtnTapped(_ sender: AnyObject) {
         party.name = nameInput.text!;
         party.address = addressInput.text!
+        party.willAttend = false;
         //        party?.startDate = dateInpute.text
         persistance.saveParties(party: party, index: index)
+        
+        self.dismiss(animated: true, completion: nil)
     }
-    
 }

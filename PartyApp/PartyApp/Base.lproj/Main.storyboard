@@ -342,7 +342,7 @@
         <!--Add Party-->
         <scene sceneID="4xB-yz-wlz">
             <objects>
-                <viewController title="Add Party" id="Kpt-i9-WxT" customClass="AddPartyViewController" customModule="PartyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Party" id="Kpt-i9-WxT" customClass="AddViewController" customModule="PartyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qaa-UD-PGv"/>
                         <viewControllerLayoutGuide type="bottom" id="e0D-Jw-acK"/>
@@ -389,6 +389,9 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCz-r6-QWb">
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveBtnTapped:" destination="Kpt-i9-WxT" eventType="touchUpInside" id="xlK-1T-U1a"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -414,10 +417,15 @@
                             <constraint firstItem="LbH-RL-44Z" firstAttribute="centerY" secondItem="c23-8o-BGU" secondAttribute="centerY" id="xuN-pw-PV6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressInput" destination="Qb6-Pu-Lbu" id="Um1-l2-6Wj"/>
+                        <outlet property="dateInpute" destination="yJF-K5-4th" id="9xG-wX-ydH"/>
+                        <outlet property="nameInput" destination="LbH-RL-44Z" id="uTe-9H-Vqe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FnE-l6-Cxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="-455"/>
+            <point key="canvasLocation" x="1908" y="-455.62218890554726"/>
         </scene>
         <!--Map-->
         <scene sceneID="ygQ-sy-RKS">

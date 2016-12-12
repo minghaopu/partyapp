@@ -41,6 +41,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var planIndex = 0
         var attendedIndex = 0
         var futureIndex = 0
+        
+        futureParties = []
+        planParties = []
+        attendParties = []
+        
         for i in 0 ..< (totalParties?.count)! {
             let party = totalParties?[i]
             if party?.willAttend == true {
