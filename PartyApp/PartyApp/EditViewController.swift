@@ -11,11 +11,12 @@ import UIKit
 
 class EditViewController: UIViewController {
     
-    var name : String?
-    var address : String?
-    var startDate : Date?
-    var editParty : Party?
-    var date : String?
+    var index : Int?
+    
+    let persistance = Persistance()
+    
+    var party : Party?
+    
     
     @IBOutlet weak var nameInput: UITextField!
         
@@ -25,12 +26,13 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        party = persistance.fetchParties()[index!]
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameInput.text = name
-        addressInput.text = address
-        dateInpute.text = date
+        nameInput.text = party?.name
+        addressInput.text = party?.address
+//        dateInpute.text = party?.startDate
     }
     
 }

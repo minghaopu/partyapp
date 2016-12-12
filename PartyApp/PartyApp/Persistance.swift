@@ -12,19 +12,24 @@ class Persistance {
     
     let partiesKey = "parties"
     
-    func saveParties(party: Party) {
+    func saveParties(party: Party, index : Int) {
         let userDefaults = UserDefaults.standard
         
-        var parties = fetcParties()
+        var parties = fetchParties()
         
-        parties.append(party)
+//        parties.append(party)
+        if (index == -1) {
+            parties.append(party)
+        } else {
+            parties[index] = party
+        }
         
         let data = NSKeyedArchiver.archivedData(withRootObject: parties)
         userDefaults.set(data, forKey: partiesKey)
         userDefaults.synchronize()
     }
     
-    func fetcParties() -> [Party] {
+    func fetchParties() -> [Party] {
         let userDefaults = UserDefaults.standard
         
         let parties = userDefaults.object(forKey: partiesKey) as? Data

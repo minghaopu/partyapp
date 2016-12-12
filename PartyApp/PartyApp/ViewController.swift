@@ -26,20 +26,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var attendParties:[Party]?
     
     let persistance = Persistance()
+    
+    var futureMap: [Int: Int]?
+    var planMap: [Int: Int]?
+    var attendMap: [Int: Int]?
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        totalParties = persistance.fetchParties()
         //create three list;
-//        let currentDateTime = Date()
-//        for party in totalParties! {
-//            if party.willAttend == true {
-//                planParties?.append(party)
-//                if party.startDate < currentDateTime {
-//                    attendParties?.append(party)
-//                }
-//            }
-//        }
+        let currentDateTime = Date()
+        var planIndex = 0
+        var attendedIndex = 0
+        var futureIndex = 0
+        for i in 0 ..< (totalParties?.count)! {
+            let party = totalParties?[i]
+            if party?.willAttend == true {
+                planParties?.append(party!)
+                planMap?[planIndex] = i
+                planIndex += 1
+                if (party?.startDate)! < currentDateTime {
+                    attendParties?.append(party!)
+                    attendMap?[attendedIndex] = i
+                    attendedIndex += 1
+                }
+            } else {
+                futureMap?[futureIndex] = i
+                futureIndex += 1
+            }
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -99,16 +117,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            detailController.name = futureList[indexPath.row];
-            detailController.date = futureDateList[indexPath.row];
+            detailController.index = futureMap?[indexPath.row]
+//            detailController.name = futureList[indexPath.row];
+//            detailController.date = futureDateList[indexPath.row];
             break;
         case 1:
-            detailController.name = planList[indexPath.row];
-            detailController.date = planDateList[indexPath.row];
+            detailController.index = planMap?[indexPath.row]
+//            detailController.name = planList[indexPath.row];
+//            detailController.date = planDateList[indexPath.row];
             break;
         case 2:
-            detailController.name = attendList[indexPath.row];
-            detailController.date = attendDateList[indexPath.row];
+            detailController.index = attendMap?[indexPath.row]
+//            detailController.name = attendList[indexPath.row];
+//            detailController.date = attendDateList[indexPath.row];
             break;
         default:
             break;

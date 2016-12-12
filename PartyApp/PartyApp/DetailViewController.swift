@@ -9,11 +9,16 @@
 import UIKit
 
 class DetailViewController: UIViewController{
- 
+    
+    var index : Int?
+    
+    let persistance = Persistance()
+    
+//    
     var party : Party?
-    var name : String?
-    var date : String?
-    var address : String?
+//    var name : String?
+//    var date : String?
+//    var address : String?
 
     @IBOutlet weak var partyNameLb: UILabel!
     @IBOutlet weak var partyTimeLb: UILabel!
@@ -22,14 +27,17 @@ class DetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         partyAddress.isUserInteractionEnabled = true
+        
+        party = persistance.fetchParties()[index!]
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        partyNameLb.text = name
-        partyTimeLb.text = date
-        partyAddress.text = "测试地址"
+        partyNameLb.text = party?.name
+//        partyTimeLb.text = party?.startDate
+        partyAddress.text = party?.address
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,21 +48,23 @@ class DetailViewController: UIViewController{
             
             let destinationViewController = segue.destination as! EditViewController
             
-            destinationViewController.editParty = party
-            destinationViewController.name = name
-            destinationViewController.date = date
-            destinationViewController.address = address
+            destinationViewController.index = index
+            
+//            destinationViewController.editParty = party
+//            destinationViewController.name = name
+//            destinationViewController.date = date
+//            destinationViewController.address = address
 //            destinationViewController.dateTimePicker = date
             
         }
     }
     
-    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? EditViewController {
-            name = sourceViewController.nameInput.text;
-            address = sourceViewController.addressInput.text;
-            date = sourceViewController.dateInpute.text;
-        }
-    }
+//    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+//        if let sourceViewController = sender.source as? EditViewController {
+//            name = sourceViewController.nameInput.text;
+//            address = sourceViewController.addressInput.text;
+//            date = sourceViewController.dateInpute.text;
+//        }
+//    }
 
 }
