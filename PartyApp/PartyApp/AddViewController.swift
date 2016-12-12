@@ -24,9 +24,12 @@ class AddViewController: UIViewController {
 
     @IBOutlet weak var addressInput: UITextField!
     
+    @IBOutlet weak var addressLb: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        party = persistance.fetchParties()[index!]
+        addressLb.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

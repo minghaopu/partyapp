@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="3433" y="-1227"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Address View Controller-->
         <scene sceneID="QFe-1Q-xYN">
             <objects>
-                <viewController id="vjr-w7-9Qa" sceneMemberID="viewController">
+                <viewController id="vjr-w7-9Qa" customClass="AddAddressViewController" customModule="PartyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mPZ-px-p3e"/>
                         <viewControllerLayoutGuide type="bottom" id="RM9-eS-6Ao"/>
@@ -311,33 +311,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9X-ah-sbN">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x72-8d-XME">
-                                <state key="normal" title="Search"/>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fya-n3-wU4"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="laZ-ej-yul">
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vjr-w7-9Qa" id="YNg-w2-hP2"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkQ-jc-1wj">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="VPA-oa-VJU"/>
+                                </constraints>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addAddress:" destination="vjr-w7-9Qa" eventType="touchUpInside" id="2X5-Ik-b7u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fya-n3-wU4" firstAttribute="leading" secondItem="VaI-1N-96k" secondAttribute="leadingMargin" id="AKL-Bz-Se4"/>
+                            <constraint firstItem="wkQ-jc-1wj" firstAttribute="height" secondItem="laZ-ej-yul" secondAttribute="height" id="Dt6-ln-76t"/>
                             <constraint firstItem="RM9-eS-6Ao" firstAttribute="top" secondItem="Fya-n3-wU4" secondAttribute="bottom" id="Dyt-pg-dg3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fya-n3-wU4" secondAttribute="trailing" id="Em4-5A-r7q"/>
-                            <constraint firstItem="d9X-ah-sbN" firstAttribute="leading" secondItem="VaI-1N-96k" secondAttribute="leadingMargin" id="QGs-Oe-q09"/>
-                            <constraint firstItem="x72-8d-XME" firstAttribute="leading" secondItem="d9X-ah-sbN" secondAttribute="trailing" constant="32" id="Quc-I4-EO9"/>
-                            <constraint firstItem="Fya-n3-wU4" firstAttribute="top" secondItem="d9X-ah-sbN" secondAttribute="bottom" constant="16" id="Vpc-wS-bmg"/>
-                            <constraint firstItem="x72-8d-XME" firstAttribute="top" secondItem="mPZ-px-p3e" secondAttribute="bottom" constant="8" id="W8b-sR-ld2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x72-8d-XME" secondAttribute="trailing" id="WJc-PB-H5v"/>
-                            <constraint firstItem="d9X-ah-sbN" firstAttribute="centerY" secondItem="x72-8d-XME" secondAttribute="centerY" id="aVD-hf-SJ1"/>
+                            <constraint firstItem="wkQ-jc-1wj" firstAttribute="leading" secondItem="laZ-ej-yul" secondAttribute="trailing" id="Mu3-ER-Ylk"/>
+                            <constraint firstItem="laZ-ej-yul" firstAttribute="top" secondItem="mPZ-px-p3e" secondAttribute="bottom" id="WLg-ng-igi"/>
+                            <constraint firstItem="wkQ-jc-1wj" firstAttribute="centerY" secondItem="laZ-ej-yul" secondAttribute="centerY" id="jX4-A2-OQ3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wkQ-jc-1wj" secondAttribute="trailing" id="jXa-Zc-gJ8"/>
+                            <constraint firstItem="Fya-n3-wU4" firstAttribute="top" secondItem="laZ-ej-yul" secondAttribute="bottom" id="oKp-1W-BhY"/>
+                            <constraint firstItem="laZ-ej-yul" firstAttribute="leading" secondItem="VaI-1N-96k" secondAttribute="leadingMargin" id="vu9-Mh-I6S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainMapView" destination="Fya-n3-wU4" id="GtU-y8-CK4"/>
+                        <outlet property="searchBarOutlet" destination="laZ-ej-yul" id="r2x-zN-l4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIc-kb-AVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4236" y="-1227.4362818590705"/>
+            <point key="canvasLocation" x="3564" y="-474"/>
         </scene>
         <!--Add Party-->
         <scene sceneID="4xB-yz-wlz">
@@ -383,6 +395,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-Pu-Lbu">
+                                <gestureRecognizers/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -395,6 +408,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="c23-8o-BGU" secondAttribute="leading" id="0Nu-ru-AFd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qb6-Pu-Lbu" secondAttribute="trailing" constant="16" id="0jh-sn-SfK"/>
@@ -416,14 +430,23 @@
                             <constraint firstItem="no1-Ah-HxG" firstAttribute="top" secondItem="ENG-oY-09x" secondAttribute="bottom" constant="25" id="vbY-uC-33t"/>
                             <constraint firstItem="LbH-RL-44Z" firstAttribute="centerY" secondItem="c23-8o-BGU" secondAttribute="centerY" id="xuN-pw-PV6"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="SBa-8k-CBd" appends="YES" id="qt0-Rs-R28"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addressInput" destination="Qb6-Pu-Lbu" id="Um1-l2-6Wj"/>
+                        <outlet property="addressLb" destination="no1-Ah-HxG" id="8hD-ha-yAD"/>
                         <outlet property="dateInpute" destination="yJF-K5-4th" id="9xG-wX-ydH"/>
                         <outlet property="nameInput" destination="LbH-RL-44Z" id="uTe-9H-Vqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FnE-l6-Cxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SBa-8k-CBd">
+                    <connections>
+                        <segue destination="vjr-w7-9Qa" kind="show" id="iwN-pd-46D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1908" y="-455.62218890554726"/>
         </scene>
@@ -460,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dU2-Gt-PS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="-441"/>
+            <point key="canvasLocation" x="2756" y="-473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VwZ-4P-Qhe">
