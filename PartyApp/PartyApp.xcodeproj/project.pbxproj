@@ -17,6 +17,7 @@
 		70490B241DFD31370067E068 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70490B231DFD31370067E068 /* Workout.swift */; };
 		70490B271DFD31D40067E068 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70490B261DFD31D40067E068 /* Party.swift */; };
 		7064458D1DFDC0440062D2E5 /* AddPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */; };
+		7064458F1DFE86280062D2E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7064458E1DFE86280062D2E5 /* MapViewController.swift */; };
 		706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */; };
 		70A924661DFD4E5600E95AE2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A924651DFD4E5600E95AE2 /* DetailViewController.swift */; };
 		70FCD8331DFE56B600882BB2 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FCD8321DFE56B600882BB2 /* Persistance.swift */; };
@@ -57,6 +58,7 @@
 		70490B231DFD31370067E068 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		70490B261DFD31D40067E068 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPartyViewController.swift; sourceTree = "<group>"; };
+		7064458E1DFE86280062D2E5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesTableViewCell.swift; sourceTree = "<group>"; };
 		70A924651DFD4E5600E95AE2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		70FCD8321DFE56B600882BB2 /* Persistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				70A924651DFD4E5600E95AE2 /* DetailViewController.swift */,
 				7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */,
 				70FCD8341DFE5D2C00882BB2 /* EditViewController.swift */,
+				7064458E1DFE86280062D2E5 /* MapViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */,
 				700591C51DF64649008937AC /* ViewController.swift in Sources */,
 				7064458D1DFDC0440062D2E5 /* AddPartyViewController.swift in Sources */,
+				7064458F1DFE86280062D2E5 /* MapViewController.swift in Sources */,
 				70490B241DFD31370067E068 /* Workout.swift in Sources */,
 				70A924661DFD4E5600E95AE2 /* DetailViewController.swift in Sources */,
 				70FCD8331DFE56B600882BB2 /* Persistance.swift in Sources */,

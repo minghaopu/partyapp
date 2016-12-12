@@ -43,9 +43,6 @@ class DetailViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSegue"{
 //            let editParty = party
-            
-            
-            
             let destinationViewController = segue.destination as! EditViewController
             
             destinationViewController.index = index
@@ -55,7 +52,6 @@ class DetailViewController: UIViewController{
 //            destinationViewController.date = date
 //            destinationViewController.address = address
 //            destinationViewController.dateTimePicker = date
-            
         }
     }
     
