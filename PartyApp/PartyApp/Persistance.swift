@@ -42,4 +42,17 @@ class Persistance {
         }
     }
     
+    func deleteParty(index : Int) {
+        if index != -1 {
+            let userDefaults = UserDefaults.standard
+            
+            var parties = fetchParties()
+            
+            parties.remove(at: index)
+            
+            let data = NSKeyedArchiver.archivedData(withRootObject: parties)
+            userDefaults.set(data, forKey: partiesKey)
+            userDefaults.synchronize()
+        }
+    }
 }

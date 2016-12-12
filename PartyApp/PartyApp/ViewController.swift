@@ -39,11 +39,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         totalParties = persistance.fetchParties()
         //create three list;
         let currentDateTime = Date()
@@ -72,6 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 futureIndex += 1
             }
         }
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,6 +114,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         partyCell.partyNameLb.text = party?.name
 //        partyCell.partyDateLb.text = party.date
         return partyCell
+    }
+    
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        var index = -1
+        switch partySegementedControl.selectedSegmentIndex {
+        case 0:
+            index = futureMap[indexPath.row]!
+            //            detailController.name = futureList[indexPath.row];
+            //            detailController.date = futureDateList[indexPath.row];
+            break;
+        case 1:
+            index = planMap[indexPath.row]!
+            //            detailController.name = planList[indexPath.row];
+            //            detailController.date = planDateList[indexPath.row];
+            break;
+        case 2:
+            index = attendMap[indexPath.row]!
+            //            detailController.name = attendList[indexPath.row];
+            //            detailController.date = attendDateList[indexPath.row];
+            break;
+        default:
+            break;
+        }
+        if editingStyle == .delete {
+            persistance.deleteParty(index: index)
+            self.viewDidLoad()
+            partyTableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
