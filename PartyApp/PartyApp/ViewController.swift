@@ -13,12 +13,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var partySegementedControl: UISegmentedControl!
     @IBOutlet weak var partyTableView: UITableView!
     
-    let futureList:[String] = ["future item 1", "future item 2"];
-    let futureDateList:[String] = ["2016/2/2","2016/2/3"];
-    let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
-    let planDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4"];
-    let attendList:[String] = ["attend item 1", "attend item 2", "attend item 3", "attend item 4"];
-    let attendDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4","2016/2/5"];
+//    let futureList:[String] = ["future item 1", "future item 2"];
+//    let futureDateList:[String] = ["2016/2/2","2016/2/3"];
+//    let planList:[String] = ["plan item 1", "plan item 2", "plan item 3"];
+//    let planDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4"];
+//    let attendList:[String] = ["attend item 1", "attend item 2", "attend item 3", "attend item 4"];
+//    let attendDateList:[String] = ["2016/2/2","2016/2/3","2016/2/4","2016/2/5"];
     
     var totalParties:[Party]?
     var futureParties:[Party]?
@@ -70,13 +70,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var returnVal = 0
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            returnVal = futureList.count;
+            returnVal = (futureParties?.count)!;
             break
         case 1:
-            returnVal = planList.count;
+            returnVal = (planParties?.count)!;
             break
         case 2:
-            returnVal = attendList.count;
+            returnVal = (attendParties?.count)!;
             break
         default:
             break
@@ -87,22 +87,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let partyCell = tableView.dequeueReusableCell(withIdentifier: "partyCell", for: indexPath) as! PartiesTableViewCell
+        var party : Party?
         switch partySegementedControl.selectedSegmentIndex {
         case 0:
-            partyCell.partyNameLb.text = futureList[indexPath.row];
-            partyCell.partyDateLb.text = futureDateList[indexPath.row];
+            party = (futureParties?[indexPath.row])!
             break;
         case 1:
-            partyCell.partyNameLb.text = planList[indexPath.row];
-            partyCell.partyDateLb.text = planDateList[indexPath.row];
+            party = (planParties?[indexPath.row])!
             break;
         case 2:
-            partyCell.partyNameLb.text = attendList[indexPath.row];
-            partyCell.partyDateLb.text = attendDateList[indexPath.row];
+            party = (attendParties?[indexPath.row])!
+
             break;
         default:
             break;
         }
+        partyCell.partyNameLb.text = party?.name
+//        partyCell.partyDateLb.text = party.date
         return partyCell
     }
     
