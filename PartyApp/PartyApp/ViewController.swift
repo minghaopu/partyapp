@@ -38,6 +38,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         totalParties = persistance.fetchParties()
         //create three list;
         let currentDateTime = Date()
@@ -66,8 +72,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 futureIndex += 1
             }
         }
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -151,6 +155,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
 //        self.viewDidLoad();
+        partyTableView.reloadData()
     }
     
     @IBAction func refreshBtnTapped(_ sender: Any) {

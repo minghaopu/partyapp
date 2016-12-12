@@ -20,6 +20,7 @@ class DetailViewController: UIViewController{
 //    var date : String?
 //    var address : String?
 
+    @IBOutlet weak var partyAttendSwitch: UISwitch!
     @IBOutlet weak var partyNameLb: UILabel!
     @IBOutlet weak var partyTimeLb: UILabel!
     @IBOutlet weak var partyAddress: UILabel!
@@ -28,16 +29,20 @@ class DetailViewController: UIViewController{
         super.viewDidLoad()
         partyAddress.isUserInteractionEnabled = true
         
-        party = persistance.fetchParties()[index!]
+//        party = persistance.fetchParties()[index!]
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        party = persistance.fetchParties()[index!]
+        
         partyNameLb.text = party?.name
 //        partyTimeLb.text = party?.startDate
         partyAddress.text = party?.address
+        partyAttendSwitch.isOn = (party?.willAttend)!
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,12 +60,16 @@ class DetailViewController: UIViewController{
         }
     }
     
-//    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
-//        if let sourceViewController = sender.source as? EditViewController {
-//            name = sourceViewController.nameInput.text;
-//            address = sourceViewController.addressInput.text;
-//            date = sourceViewController.dateInpute.text;
-//        }
-//    }
+    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+    }
+
+    @IBAction func attendSwitchTapped(_ sender: Any) {
+        if partyAttendSwitch.isOn {
+            party?.willAttend = true
+        } else {
+            party?.willAttend = false;
+        }
+        persistance.saveParties(party: party!, index: index!)
+    }
 
 }
