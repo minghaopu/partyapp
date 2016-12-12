@@ -22,6 +22,7 @@ class EditViewController: UIViewController {
     @IBOutlet weak var addressInput: UITextField!
     
     @IBOutlet weak var dateInpute: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,6 +31,11 @@ class EditViewController: UIViewController {
         nameInput.text = name
         addressInput.text = address
         dateInpute.text = date
+    }
+    @IBAction func saveBtnTapped(_ sender: Any) {
+        name = nameInput.text
+        address = addressInput.text
+        date = dateInpute.text
     }
     
 }

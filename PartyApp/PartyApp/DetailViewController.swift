@@ -13,6 +13,7 @@ class DetailViewController: UIViewController{
     var party : Party?
     var name : String?
     var date : String?
+    var address : String?
 
     @IBOutlet weak var partyNameLb: UILabel!
     @IBOutlet weak var partyTimeLb: UILabel!
@@ -42,6 +43,7 @@ class DetailViewController: UIViewController{
             destinationViewController.editParty = party
             destinationViewController.name = name
             destinationViewController.date = date
+            destinationViewController.address = address
 //            destinationViewController.dateTimePicker = date
             
         }
@@ -49,9 +51,9 @@ class DetailViewController: UIViewController{
     
     @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? EditViewController {
-            partyNameLb.text = sourceViewController.name;
-            partyAddress.text = sourceViewController.address;
-            partyTimeLb.text = sourceViewController.date;
+            name = sourceViewController.name;
+            address = sourceViewController.address;
+            date = sourceViewController.date;
         }
     }
 
