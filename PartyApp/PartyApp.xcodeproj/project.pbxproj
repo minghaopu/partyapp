@@ -19,6 +19,8 @@
 		7064458D1DFDC0440062D2E5 /* AddPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */; };
 		706BD7951DFD3B3100613C39 /* PartiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */; };
 		70A924661DFD4E5600E95AE2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A924651DFD4E5600E95AE2 /* DetailViewController.swift */; };
+		70FCD8331DFE56B600882BB2 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FCD8321DFE56B600882BB2 /* Persistance.swift */; };
+		70FCD8351DFE5D2C00882BB2 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FCD8341DFE5D2C00882BB2 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPartyViewController.swift; sourceTree = "<group>"; };
 		706BD7941DFD3B3100613C39 /* PartiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartiesTableViewCell.swift; sourceTree = "<group>"; };
 		70A924651DFD4E5600E95AE2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		70FCD8321DFE56B600882BB2 /* Persistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
+		70FCD8341DFE5D2C00882BB2 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 				700591F11DF6466C008937AC /* view */,
 				700591CE1DF64649008937AC /* Info.plist */,
 				70490B251DFD314F0067E068 /* model */,
+				70FCD8321DFE56B600882BB2 /* Persistance.swift */,
 			);
 			path = PartyApp;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				700591C41DF64649008937AC /* ViewController.swift */,
 				70A924651DFD4E5600E95AE2 /* DetailViewController.swift */,
 				7064458C1DFDC0440062D2E5 /* AddPartyViewController.swift */,
+				70FCD8341DFE5D2C00882BB2 /* EditViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -303,8 +309,10 @@
 				7064458D1DFDC0440062D2E5 /* AddPartyViewController.swift in Sources */,
 				70490B241DFD31370067E068 /* Workout.swift in Sources */,
 				70A924661DFD4E5600E95AE2 /* DetailViewController.swift in Sources */,
+				70FCD8331DFE56B600882BB2 /* Persistance.swift in Sources */,
 				70490B271DFD31D40067E068 /* Party.swift in Sources */,
 				700591C31DF64649008937AC /* AppDelegate.swift in Sources */,
+				70FCD8351DFE5D2C00882BB2 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

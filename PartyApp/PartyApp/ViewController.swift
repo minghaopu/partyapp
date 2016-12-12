@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var futureParties:[Party]?
     var planParties:[Party]?
     var attendParties:[Party]?
+    
+    let persistance = Persistance()
 
     
     override func viewDidLoad() {

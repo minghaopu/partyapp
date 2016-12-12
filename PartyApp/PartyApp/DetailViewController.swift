@@ -10,9 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController{
  
-    var party : Party? = nil
-    var name : String = ""
-    var date : String = ""
+    var party : Party?
+    var name : String?
+    var date : String?
 
     @IBOutlet weak var partyNameLb: UILabel!
     @IBOutlet weak var partyTimeLb: UILabel!
@@ -31,5 +31,28 @@ class DetailViewController: UIViewController{
         partyAddress.text = "测试地址"
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editSegue"{
+//            let editParty = party
+            
+            
+            
+            let destinationViewController = segue.destination as! EditViewController
+            
+            destinationViewController.editParty = party
+            destinationViewController.name = name
+            destinationViewController.date = date
+//            destinationViewController.dateTimePicker = date
+            
+        }
+    }
+    
+    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? EditViewController {
+            partyNameLb.text = sourceViewController.name;
+            partyAddress.text = sourceViewController.address;
+            partyTimeLb.text = sourceViewController.date;
+        }
+    }
 
 }
